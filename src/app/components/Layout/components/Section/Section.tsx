@@ -5,10 +5,17 @@ import { ReactNode } from "react";
 type Props = {
   className?: string;
   children: ReactNode;
+  bgColor?: "transparent" | "white" | "black";
 };
 
-export const Section = ({ children, className }: Props) => {
+export const Section = ({
+  children,
+  bgColor = "transparent",
+  className,
+}: Props) => {
   return (
-    <div className={`${styles.container} ${className} sm:px-6`}>{children}</div>
+    <div className={`${styles.container} ${className} sm:px-6 bg-${bgColor}`}>
+      {children}
+    </div>
   );
 };

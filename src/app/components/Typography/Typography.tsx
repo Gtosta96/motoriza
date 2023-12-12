@@ -13,7 +13,6 @@ type Variant =
 
 const variants: Record<Variant, CSSProperties> = {
   h1: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "96px",
     fontStyle: "normal",
@@ -22,7 +21,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-3.84px",
   },
   h2: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "60px",
     fontStyle: "normal",
@@ -31,7 +29,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-2.4px",
   },
   h3: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "48px",
     fontStyle: "normal",
@@ -40,7 +37,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-1.92px",
   },
   subtitle1: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "34px",
     fontStyle: "normal",
@@ -49,7 +45,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-1.36px",
   },
   subtitle2: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "24px",
     fontStyle: "normal",
@@ -58,7 +53,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-0.96px",
   },
   paragraph: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "16px",
     fontStyle: "normal",
@@ -67,7 +61,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-0.48px",
   },
   button: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "14px",
     fontStyle: "normal",
@@ -76,7 +69,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-0.175px",
   },
   caption: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "12px",
     fontStyle: "normal",
@@ -85,7 +77,6 @@ const variants: Record<Variant, CSSProperties> = {
     letterSpacing: "-0.24px",
   },
   overline: {
-    color: "#000",
     fontFamily: "Inter",
     fontSize: "12px",
     fontStyle: "normal",
@@ -98,9 +89,23 @@ const variants: Record<Variant, CSSProperties> = {
 
 type Props = {
   variant: Variant;
+  color?: "white" | "black";
   children: ReactNode;
+  block?: boolean;
 };
 
-export const Typography = ({ variant, children }: Props) => {
-  return <span style={variants[variant]}>{children}</span>;
+export const Typography = ({
+  variant,
+  color = "black",
+  block,
+  children,
+}: Props) => {
+  return (
+    <span
+      style={variants[variant]}
+      className={`text-${color} ${block ? "block" : undefined}`}
+    >
+      {children}
+    </span>
+  );
 };

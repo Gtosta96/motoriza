@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import styles from "./Navbar.module.css";
-import MotorizaLogo from "./motoriza-logo.svg";
+import MotorizaLogo from "@/app/assets/motoriza-logo.svg";
 
 export const NavBar = () => {
   return (
