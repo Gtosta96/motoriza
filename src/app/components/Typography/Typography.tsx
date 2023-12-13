@@ -11,6 +11,17 @@ type Variant =
   | "caption"
   | "overline";
 
+type Colors =
+  | "black"
+  | "white"
+  | "dark-grey"
+  | "light-grey"
+  | "crimson"
+  | "dark-blue"
+  | "yellow"
+  | "orange"
+  | "sunrise";
+
 const variants: Record<Variant, CSSProperties> = {
   h1: {
     fontFamily: "Inter",
@@ -89,7 +100,7 @@ const variants: Record<Variant, CSSProperties> = {
 
 type Props = {
   variant: Variant;
-  color?: "white" | "black";
+  color?: Colors;
   children: ReactNode;
   block?: boolean;
 };
@@ -103,7 +114,7 @@ export const Typography = ({
   return (
     <span
       style={variants[variant]}
-      className={`text-${color} ${block ? "block" : undefined}`}
+      className={`text-${color} ${block ? "block" : "inline"}`}
     >
       {children}
     </span>

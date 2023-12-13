@@ -1,20 +1,13 @@
-import styles from "./Section.module.css";
-
 import { ReactNode } from "react";
 
 type Props = {
   className?: string;
   children: ReactNode;
-  bgColor?: "transparent" | "white" | "black";
 };
 
-export const Section = ({
-  children,
-  bgColor = "transparent",
-  className,
-}: Props) => {
+export const Section = ({ children, className }: Props) => {
   return (
-    <div className={`${styles.container} ${className} sm:px-6 bg-${bgColor}`}>
+    <div className={`flex flex-col gap-y-2.5 px-6 py-24 sm:px-28 ${className}`}>
       {children}
     </div>
   );

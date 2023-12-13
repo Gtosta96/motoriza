@@ -4,6 +4,7 @@ import { Dropdown } from "@/app/components/Dropdown/Dropdown";
 import { Layout } from "@/app/components/Layout/Layout";
 import { Typography } from "@/app/components/Typography/Typography";
 import MotorizaLogo from "@/app/assets/motoriza-logo.svg";
+import MotorizaWhiteLogo from "@/app/assets/motoriza-white.svg";
 
 import styles from "./page.module.css";
 import { TextInput } from "../components/TextInput/TextInput";
@@ -13,26 +14,22 @@ const LandingPage = () => {
     <Layout>
       <Layout.Navbar />
 
-      <Layout.Section
-        className={`${styles.hero} flex flex-col justify-center gap-y-4 `}
-      >
-        <div className="flex flex-col">
+      <Layout.Section className={`${styles.hero} !justify-center !gap-y-4`}>
+        <Typography variant="h2" color="white" block>
+          Seu próximo carro,
           <Typography variant="h2" color="white" block>
-            Seu próximo carro,
-            <Typography variant="h2" color="white" block>
-              sua melhor escolha.
-            </Typography>
+            sua melhor escolha.
           </Typography>
-          <Typography variant="subtitle2" color="white">
-            Compare e economize{" "}
-            <Typography variant="subtitle2" color="white" block>
-              com a <span className="font-bold">Motoriza.</span>
-            </Typography>
+        </Typography>
+        <Typography variant="subtitle2" color="white">
+          Compare e economize{" "}
+          <Typography variant="subtitle2" color="white" block>
+            com a <span className="font-bold">Motoriza.</span>
           </Typography>
-        </div>
+        </Typography>
       </Layout.Section>
 
-      <Layout.Section bgColor="black" className="flex flex-col gap-y-2.5 py-24">
+      <Layout.Section className="!bg-black">
         <Typography variant="h3" color="white" block>
           direto ao ponto
         </Typography>
@@ -47,13 +44,13 @@ const LandingPage = () => {
         </Typography>
       </Layout.Section>
 
-      <Layout.Section className="flex flex-col gap-y-10 py-24">
+      <Layout.Section className="!gap-y-10 !bg-white">
         <div className="flex flex-col gap-y-8">
-          <Typography variant="paragraph">
-            Quero saber a variação de preço de um
+          <Typography variant="subtitle2">
+            comece escolhendo um carro para analisar
           </Typography>
 
-          <div className="flex gap-6 flex-wrap">
+          <div className="flex flex-wrap gap-6">
             <Dropdown placeholder="selecione o fabricante" />
             <Dropdown placeholder="escolha o modelo" />
             <Dropdown placeholder="defina o ano" />
@@ -61,23 +58,25 @@ const LandingPage = () => {
         </div>
 
         <div className="flex flex-col gap-y-8">
-          <Typography variant="subtitle2">e comparar no período</Typography>
+          <Typography variant="subtitle2">
+            escolha o período para análise
+          </Typography>
 
-          <div className="flex gap-6 flex-wrap">
+          <div className="flex flex-wrap gap-6">
             <Dropdown placeholder="dd/mm/aaaa" />
             <Dropdown placeholder="dd/mm/aaaa" />
             <Dropdown placeholder="dd/mm/aaaa" />
           </div>
 
           <div className="flex flex-col gap-y-2">
-            <Typography variant="paragraph" block>
-              se liga
+            <Typography variant="overline" color="dark-grey" block>
+              SE LIGA
             </Typography>
 
-            <Typography variant="caption" block>
+            <Typography variant="caption" color="dark-grey" block>
               Nosso serviço é gratuito e a gente só vai te mostrar os preços dos
               carros de acordo com os registros históricos na tabela FIPE,
-              <Typography variant="caption" block>
+              <Typography variant="caption" color="dark-grey" block>
                 ok? A Motoriza não garante o preço de nenhum carro em nenhuma
                 loja, concessionária ou vendedor particular.
               </Typography>
@@ -86,10 +85,10 @@ const LandingPage = () => {
         </div>
       </Layout.Section>
 
-      <Layout.Section className="flex flex-col gap-y-10 py-24" bgColor="black">
+      <Layout.Section className="!gap-y-8 !bg-black">
         <div className="flex flex-col gap-6">
           <Image
-            src={MotorizaLogo}
+            src={MotorizaWhiteLogo}
             alt="Motoriza Logo"
             width={198}
             height={48}
@@ -103,7 +102,7 @@ const LandingPage = () => {
           </Typography>
         </div>
 
-        <div className="flex gap-x-16 flex-wrap">
+        <div className="flex flex-wrap gap-x-16">
           <div className="flex flex-col gap-y-4">
             <Typography variant="subtitle2" color="white">
               nome
@@ -120,16 +119,16 @@ const LandingPage = () => {
         </div>
 
         <div className="flex flex-col gap-y-2">
-          <Typography variant="paragraph" color="white" block>
-            se liga
+          <Typography variant="overline" color="dark-grey" block>
+            SE LIGA
           </Typography>
 
           <div>
-            <Typography variant="caption" color="white" block>
+            <Typography variant="caption" color="dark-grey" block>
               Nós não enviamos SPAM. Ao se cadastrar você concorda em
               compartilhar seu nome e e-mail com a gente e também topa que a
               gente te mande comunicações sobre o
-              <Typography variant="caption" color="white" block>
+              <Typography variant="caption" color="dark-grey" block>
                 lançamento da plataforma e outros informativos que achamos que
                 você pode achar interessante. Mas fica tranquilo(a) que seus
                 dados estão seguros com a gente.
@@ -139,7 +138,7 @@ const LandingPage = () => {
         </div>
       </Layout.Section>
 
-      <Layout.Section className="flex flex-col gap-y-10 py-24">
+      <Layout.Section className="!bg-white !py-16">
         <div className="flex flex-col gap-y-2">
           <Image
             src={MotorizaLogo}
@@ -150,10 +149,10 @@ const LandingPage = () => {
           <Typography variant="paragraph" color="black" block>
             © {new Date().getFullYear()} Motoriza FIPE é uma plataforma de
             comparação de preços de veículos através da tabela FIPE.
-            <Typography variant="paragraph" color="black" block>
-              FIPE é marca registrada da Fundação Instituto de Pesquisas
-              Econômicas.
-            </Typography>
+          </Typography>
+          <Typography variant="paragraph" color="light-grey" block>
+            FIPE é marca registrada da Fundação Instituto de Pesquisas
+            Econômicas.
           </Typography>
         </div>
       </Layout.Section>

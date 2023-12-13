@@ -10,7 +10,7 @@ export const TextInput = ({ placeholder }: Props) => {
       <input
         type="text"
         placeholder={placeholder}
-        className="px-6 h-16 rounded-lg"
+        className="h-16 rounded-lg px-6"
       />
     </div>
   );
