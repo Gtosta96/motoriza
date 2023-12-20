@@ -3,6 +3,10 @@
 import { Fragment, useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import ArrowDownIcon from "@/app/assets/icons/ArrowDown.svg";
+import { variants } from "../Typography/Typography";
 
 type Person = { id: number; name: string };
 
@@ -17,9 +21,10 @@ const people: Person[] = [
 
 type Props = {
   placeholder: string;
+  icon: string | StaticImport;
 };
 
-export const Dropdown = ({ placeholder }: Props) => {
+export const Dropdown = ({ placeholder, icon }: Props) => {
   const [selected, setSelected] = useState<Person>();
   const [query, setQuery] = useState("");
 
@@ -36,18 +41,19 @@ export const Dropdown = ({ placeholder }: Props) => {
   return (
     <Combobox value={selected} onChange={setSelected}>
       <div className="relative mt-1">
-        <div className="focus-visible:ring-offset-teal-300 relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 sm:text-sm">
+        <div className="w-full cursor-default overflow-hidden rounded-lg bg-white shadow-[0px_8px_20px_0px_rgba(0,0,0,0.06)]">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-6 pr-2">
+            <Image alt="icon" aria-hidden="true" src={icon} />
+          </div>
           <Combobox.Input<Person>
-            className="text-gray-900 h-16 w-full border-none px-6 py-2 pl-3 pr-10 text-sm leading-5 focus:ring-0"
+            style={variants["paragraph"]}
+            className="h-16 w-full py-2 pl-14 pr-8 text-black placeholder-black"
             displayValue={(person) => person.name}
             onChange={(event) => setQuery(event.target.value)}
             placeholder={placeholder}
           />
-          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-            <ChevronUpDownIcon
-              className="text-gray-400 h-5 w-5"
-              aria-hidden="true"
-            />
+          <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-6">
+            <Image alt="arrow down" aria-hidden="true" src={ArrowDownIcon} />
           </Combobox.Button>
         </div>
         <Transition
@@ -57,21 +63,21 @@ export const Dropdown = ({ placeholder }: Props) => {
           leaveTo="opacity-0"
           afterLeave={() => setQuery("")}
         >
-          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+          <Combobox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base sm:text-sm">
             {filteredPeople.length === 0 && query !== "" ? (
-              <div className="text-gray-700 relative cursor-default select-none px-4 py-2">
+              <div className="relative cursor-default select-none py-2 pl-10 pr-4">
                 Resultado não encontrado
               </div>
             ) : (
               filteredPeople.map((person) => (
                 <Combobox.Option
                   key={person.id}
+                  value={person}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? "bg-teal-600 text-white" : "text-gray-900"
+                      active ? "bg-[#3b82f60d]" : "font-normal"
                     }`
                   }
-                  value={person}
                 >
                   {({ selected, active }) => (
                     <>
@@ -82,10 +88,11 @@ export const Dropdown = ({ placeholder }: Props) => {
                       >
                         {person.name}
                       </span>
+
                       {selected ? (
                         <span
                           className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                            active ? "text-white" : "text-teal-600"
+                            active ? "font-medium" : "font-normal"
                           }`}
                         >
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />

@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
+import { twMerge } from "tailwind-merge";
 
 type Variant =
   | "h1"
@@ -22,7 +23,7 @@ type Colors =
   | "orange"
   | "sunrise";
 
-const variants: Record<Variant, CSSProperties> = {
+export const variants: Record<Variant, CSSProperties> = {
   h1: {
     fontFamily: "Inter",
     fontSize: "96px",
@@ -100,21 +101,21 @@ const variants: Record<Variant, CSSProperties> = {
 
 type Props = {
   variant: Variant;
-  color?: Colors;
+  color?: `text-${Colors}`;
   children: ReactNode;
   block?: boolean;
 };
 
 export const Typography = ({
   variant,
-  color = "black",
+  color = "text-black",
   block,
   children,
 }: Props) => {
   return (
     <span
       style={variants[variant]}
-      className={`text-${color} ${block ? "block" : "inline"}`}
+      className={twMerge(`${color} ${block ? "block" : "inline"}`)}
     >
       {children}
     </span>

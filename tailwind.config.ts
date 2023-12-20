@@ -13,7 +13,8 @@ const config: Config = {
 
       // BASE COLORS
       black: "#111111",
-      white: "#EEEEEE",
+      white: "#FFFFFF",
+      "light-silver": "#EEEEEE",
       "dark-grey": "#666666",
       "light-grey": "#F4F5F7",
       crimson: "#DC143C",
